@@ -76,4 +76,3 @@ class BatchGotoMethod(DeleteMethod):
             (goto) 2>nul & del "%~f0"
             """.format(os.getpid(), script_path))
         os.startfile(f.name)
-

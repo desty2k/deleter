@@ -1,5 +1,10 @@
 # deleter
- Delete Python script at exit.
+
+[![Build](https://github.com/desty2k/deleter/actions/workflows/build.yml/badge.svg)](https://github.com/desty2k/deleter/actions/workflows/build.yml)
+[![Version](https://img.shields.io/pypi/v/deleter)](https://pypi.org/project/deleter/)
+[![Version](https://img.shields.io/pypi/dm/deleter)](https://pypi.org/project/deleter/)
+
+Automatically remove python scripts from disk after execution.
 
 ## Installation
 

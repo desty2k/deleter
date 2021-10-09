@@ -7,10 +7,11 @@ __all__ = ["register", "unregister"]
 
 
 def _delete():
+    path = get_script_path()
     for method in [BatchStartMethod, BatchGotoMethod, SubprocessMethod, OSRemoveMethod]:
-        method = method()
-        if method.is_platform_compatible():
-            method.run(get_script_path())
+        deleter = method(path)
+        if deleter.is_compatible():
+            deleter.run()
 
 
 def register():

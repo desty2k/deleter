@@ -1,10 +1,11 @@
 import os
 
+from abc import abstractmethod, ABC
 
 __all__ = ["SubprocessMethod", "OSRemoveMethod", "BatchGotoMethod", "BatchStartMethod"]
 
 
-class DeleteMethod:
+class DeleteMethod(ABC):
     """Base class for all delete methods."""
     platforms = []
 
@@ -12,6 +13,7 @@ class DeleteMethod:
         super(DeleteMethod, self).__init__()
 
     def run(self, script_path):
+    @abstractmethod
         pass
 
     def is_platform_compatible(self):

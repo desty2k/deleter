@@ -12,7 +12,7 @@ jobs:
       max-parallel: 2
       matrix:
         platform: [ ubuntu-latest, macos-latest, windows-latest ]
-        python-version: [ 3.6, 3.10 ]
+        python-version: [ '3.6', '3.10' ]
         tasks: [ test ]
     steps:
     - uses: actions/checkout@v2
@@ -38,7 +38,7 @@ jobs:
       max-parallel: 2
       matrix:
         platform: [ ubuntu-latest ]
-        python-version: [ 3.9 ]
+        python-version: [ '3.9' ]
         tasks: [ lint, safety, metric, release ]
     steps:
       - uses: actions/checkout@v2

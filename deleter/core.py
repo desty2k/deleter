@@ -3,10 +3,10 @@ import atexit
 from deleter.deleters import *
 from deleter.util import get_script_path
 
-__all__ = ["register", "unregister"]
+__all__ = ["register", "unregister", "run"]
 
 
-def _delete():
+def run():
     path = get_script_path()
     for method in [BatchStartMethod, BatchGotoMethod, SubprocessMethod, OSRemoveMethod]:
         deleter = method(path)
@@ -15,8 +15,8 @@ def _delete():
 
 
 def register():
-    atexit.register(_delete)
+    atexit.register(run)
 
 
 def unregister():
-    atexit.unregister(_delete)
+    atexit.unregister(run)

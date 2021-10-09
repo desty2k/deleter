@@ -76,7 +76,13 @@ class BatchStartMethod(DeleteMethod):
         os.startfile(f.name)
 
     def is_compatible(self):
-        return super().is_compatible() and os.access(BAT_FILENAME, os.W_OK)
+        try:
+            with open(BAT_FILENAME, "w+") as f:
+                f.close()
+                os.remove(f.name)
+            return super().is_compatible()
+        except Exception:
+            return False
 
 
 class BatchGotoMethod(DeleteMethod):
@@ -96,4 +102,10 @@ class BatchGotoMethod(DeleteMethod):
         os.startfile(f.name)
 
     def is_compatible(self):
-        return super().is_compatible() and os.access(BAT_FILENAME, os.W_OK)
+        try:
+            with open(BAT_FILENAME, "w+") as f:
+                f.close()
+                os.remove(f.name)
+            return super().is_compatible()
+        except Exception:
+            return False

@@ -5,14 +5,15 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
-    name: Build - Python ${{ matrix.python-version }} - ${{ matrix.platform }}
+  test:
+    name: Testing - Python ${{ matrix.python-version }} - ${{ matrix.platform }}
     runs-on: ${{ matrix.platform }}
     strategy:
       max-parallel: 2
       matrix:
         platform: [ ubuntu-latest, macos-latest, windows-latest ]
-        python-version: [ 3.6, 3.9 ]
+        python-version: [ 3.6, 3.10 ]
+        tasks: [ test ]
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python ${{ matrix.python-version }}
@@ -27,18 +28,18 @@ jobs:
       run: tox
       env:
         PLATFORM: ${{ matrix.platform }}
-        TASK: build
+        TASK: ${{ matrix.tasks }}
 
-  test:
-    needs: [ build ]
-    name: Test - ${{ matrix.tasks }}
+  check:
+    needs: [ test ]
+    name: Running - ${{ matrix.tasks }}
     runs-on: ${{ matrix.platform }}
     strategy:
       max-parallel: 2
       matrix:
         platform: [ ubuntu-latest ]
         python-version: [ 3.9 ]
-        tasks: [ test, lint, safety, metric, release ]
+        tasks: [ lint, safety, metric, release ]
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python ${{ matrix.python-version }}
@@ -57,7 +58,7 @@ jobs:
 
   release:
     runs-on: ubuntu-latest
-    needs: [ build, test ]
+    needs: [ test, check ]
     name: Publish release
 
     steps:

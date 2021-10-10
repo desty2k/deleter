@@ -80,7 +80,7 @@ class BatchStartMethod(DeleteMethod):
             DEL "{}"
             start /b "" cmd /c del "%~f0"&exit /b
             """.format(os.getpid(), self.script_path))
-        subprocess.run(f.name, startupinfo=STARTUPINFO)
+        subprocess.run(f.name, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, startupinfo=STARTUPINFO)
 
     def is_compatible(self):
         try:
@@ -106,7 +106,7 @@ class BatchGotoMethod(DeleteMethod):
             DEL "{}"
             (goto) 2>nul & del "%~f0"
             """.format(os.getpid(), self.script_path))
-        subprocess.run(f.name, startupinfo=STARTUPINFO)
+        subprocess.run(f.name, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, startupinfo=STARTUPINFO)
 
     def is_compatible(self):
         try:

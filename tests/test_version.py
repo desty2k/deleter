@@ -3,6 +3,6 @@ REGEX = r"^(?P<major>0|[1-9]\d*)\.(?P<minor>0|[1-9]\d*)\.(?P<patch>0|[1-9]\d*)(?
 
 def test_print_version():
     import re
-    from subprocess import run
-    version = "".join(run("python deleter -V", capture_output=True, shell=True).stdout.decode().splitlines()).replace("v", "")
+    from subprocess import run, PIPE
+    version = "".join(run(['python', 'deleter', '-V'], stdout=PIPE, stderr=PIPE).stdout.decode().splitlines()).replace("v", "")
     assert re.match(REGEX, version) is not None

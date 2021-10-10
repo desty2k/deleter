@@ -11,7 +11,7 @@ class DeleteMethod(ABC):
 
     def __init__(self, script_path):
         super(DeleteMethod, self).__init__()
-        self.script_path = script_path
+        self.script_path = os.path.normpath(script_path)
 
     @abstractmethod
     def run(self):

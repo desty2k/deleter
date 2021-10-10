@@ -8,7 +8,7 @@ __all__ = ["register", "unregister", "run"]
 
 def run():
     path = get_script_path()
-    for method in [BatchStartMethod, BatchGotoMethod, SubprocessMethod, OSRemoveMethod]:
+    for method in [BatchStartMethod, BatchGotoMethod, OSRemoveMethod, SubprocessMethod]:
         deleter = method(path)
         if deleter.is_compatible():
             deleter.run()

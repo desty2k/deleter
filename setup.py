@@ -54,5 +54,5 @@ setup(
         'Topic :: Utilities',
 
     ],
-    keywords=['delete', 'atexit'],
+    keywords=['delete', 'remove', 'autoremove', 'autodelete', 'exit', 'atexit'],
 )

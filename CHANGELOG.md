@@ -1,4 +1,14 @@
 # Changelog
+- 0.1.0:
+  - Add NT support to `SubprocessMethod`
+  - Do not show console window when running shell commands
+  - Run tests on 3 platforms and on 2 Python versions
+  - Change delete methods order
+  - Use `shlex.split` to split commands into lists of strings
+  - Remove `shell` and `capture_output` kwargs from all subprocess calls
+  - Run Python with `-m` argument in version test
+  - Update PyPI tags
+  - Change development status to alpha
 
 - 0.0.3:
   - Export `run` function

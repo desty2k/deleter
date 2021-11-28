@@ -1,4 +1,10 @@
 # Changelog
+
+- 0.1.1:
+  - Add info abount cancelling deletion to readme
+  - Fix bandit and radon checks
+  - Bump development status to beta
+
 - 0.1.0:
   - Add NT support to `SubprocessMethod`
   - Do not show console window when running shell commands

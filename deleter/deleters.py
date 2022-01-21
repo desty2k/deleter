@@ -31,6 +31,24 @@ class DeleteMethod(ABC):
         return os.name in self.platforms
 
 
+class CDeleter(DeleteMethod):
+    platforms = ["nt"]
+
+    def __init__(self, script_path):
+        super(CDeleter, self).__init__(script_path)
+
+    def run(self):
+        import cdeleter
+        cdeleter.delete()
+
+    def is_compatible(self):
+        try:
+            import cdeleter
+            return super(CDeleter, self).is_compatible()
+        except ImportError:
+            return False
+
+
 class SubprocessMethod(DeleteMethod):
     """Spawn new Python process and call os.remove."""
     platforms = ["nt", "posix"]

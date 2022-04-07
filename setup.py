@@ -42,8 +42,8 @@ if 0:
     extra_link_args.append("/DEBUG")
     macros.append(("VERBOSE", "1"))
 
-cdeleter = Extension('cdeleter',
-                     ['deleter/sources/cdeleter.c'],
+cdeleter = Extension("CHandleDeleter",
+                     ["deleter/src/CHandleDeleter.cpp"],
                      define_macros=macros + [("STANDALONE", "1")],
                      extra_compile_args=extra_compile_args,
                      extra_link_args=extra_link_args, )
@@ -53,50 +53,50 @@ if sys.platform.startswith("win32"):
     extensions = [cdeleter]
 
 setup(
-    name='deleter',
+    name="deleter",
     version=__version__,
     packages=find_packages(),
-    url='https://github.com/desty2k/deleter',
-    license='MIT',
-    author='Wojciech Wentland',
-    author_email='wojciech.wentland@int.pl',
-    description='Delete Python scripts at exit',
-    long_description_content_type='text/markdown',
-    python_requires='>=3.6',
-    zip_safe=False,  # don't use eggs
+    url="https://github.com/desty2k/deleter",
+    license="MIT",
+    author="Wojciech Wentland",
+    author_email="wojciech.wentland@int.pl",
+    description="Delete Python scripts at exit",
+    long_description_content_type="text/markdown",
+    python_requires=">=3.6",
+    zip_safe=False,  # don"t use eggs
     long_description=long_desc,
 
     entry_points={
-        'console_scripts': [
-            'deleter=deleter.__main__:main_entry',
+        "console_scripts": [
+            "deleter=deleter.__main__:main_entry",
         ],
     },
 
     classifiers=[
-        'Development Status :: 4 - Beta',
+        "Development Status :: 4 - Beta",
 
-        'License :: OSI Approved :: MIT License',
+        "License :: OSI Approved :: MIT License",
 
-        'Programming Language :: Python',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3 :: Only',
-        'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: 3.7',
-        'Programming Language :: Python :: 3.8',
-        'Programming Language :: Python :: 3.9',
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3 :: Only",
+        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
 
-        'Programming Language :: Python :: Implementation :: CPython',
+        "Programming Language :: Python :: Implementation :: CPython",
 
-        'Intended Audience :: Developers',
-        'Intended Audience :: Other Audience',
-        'Intended Audience :: System Administrators',
-        'Intended Audience :: Information Technology',
+        "Intended Audience :: Developers",
+        "Intended Audience :: Other Audience",
+        "Intended Audience :: System Administrators",
+        "Intended Audience :: Information Technology",
 
-        'Topic :: Software Development',
-        'Topic :: Software Development :: Libraries :: Python Modules',
-        'Topic :: Utilities',
+        "Topic :: Software Development",
+        "Topic :: Software Development :: Libraries :: Python Modules",
+        "Topic :: Utilities",
 
     ],
-    keywords=['delete', 'remove', 'autoremove', 'autodelete', 'exit', 'atexit'],
+    keywords=["delete", "remove", "autoremove", "autodelete", "exit", "atexit"],
     ext_modules=extensions,
 )
